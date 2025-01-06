@@ -3,6 +3,7 @@ import sys
 from settings import *
 from map import *
 from player import *
+from raycasting import *
 
 class Game:
     def __init__(self):
@@ -15,6 +16,7 @@ class Game:
     def new_game(self):
         self.map = Map(self)
         self.player = Player(self)
+        self.raycasting = RayCasting(self)
 
     def update(self):
         self.player.update()
@@ -36,6 +38,7 @@ class Game:
     def run(self):
         while True:
             self.check_events()
+            self.raycasting.update()
             self.update()
             self.draw()
 
